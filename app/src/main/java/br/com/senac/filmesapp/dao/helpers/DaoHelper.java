@@ -20,6 +20,7 @@ public class DaoHelper<T> {
         try {
             return mInstance.getDao(className);
         } catch (SQLException e) {
+            e.printStackTrace();
             return null;
         }
     }

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".activitys.FilmeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="TITULO DO FILME"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="+" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/popularidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Popularidade"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/votos_qtd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Votos"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Média\xzx\zx\zx\zx\zx\zx\zx\zx"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/titulo_original"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TItulo Original"
+        android:textSize="12sp" />
+
+    <TextSwitcher
+        android:id="@+id/descricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+</LinearLayout>

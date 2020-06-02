@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         nome = findViewById(R.id.nomeFilme);
         control = new MainControl(this);
+        ToolBarUtil.setTitle(this,"Home");
     }
 
     public void pesquisarFilme(View view) {

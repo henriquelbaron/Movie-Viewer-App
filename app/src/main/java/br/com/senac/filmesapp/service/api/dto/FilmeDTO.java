@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import br.com.senac.filmesapp.activitys.MainActivity;
+import br.com.senac.filmesapp.modal.FilmeBO;
 import br.com.senac.filmesapp.modal.domain.Filme;
-import br.com.senac.filmesapp.service.api.tasks.DownloadImgTask;
+import br.com.senac.filmesapp.modal.domain.FilmeGenero;
+import br.com.senac.filmesapp.modal.domain.Genero;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,10 +20,13 @@ public class FilmeDTO {
     private List<FilmeResult> results;
 
 
-    public List<Filme> toObject() throws ExecutionException, InterruptedException {
-        List<Filme> filmes = new ArrayList<>();
+    public List<FilmeBO> toObject() throws ExecutionException, InterruptedException {
+        List<FilmeBO> filmes = new ArrayList<>();
         for (FilmeResult f : results) {
-            Filme filme = new Filme((long) f.getId(), Double.valueOf(f.popularity), Double.valueOf(f.vote_average), (int) f.vote_count, f.title, f.original_title, f.original_language, f.release_date, f.poster_path, f.overview);
+            FilmeBO filme = new FilmeBO((int)f.getId(), Double.valueOf(f.popularity), Double.valueOf(f.vote_average), (int) f.vote_count, f.title, f.original_title, f.original_language, f.release_date, f.poster_path, f.overview);
+            for (int i = 0; i < f.genre_ids.size(); i++) {
+                filme.addGenero(new FilmeGenero(new Genero(f.genre_ids.get(i)),filme.toFilme()));
+            }
             filmes.add(filme);
         }
         return filmes;
@@ -44,5 +48,6 @@ public class FilmeDTO {
         private float vote_average;
         private String overview;
         private String release_date;
+        private List<Integer> genre_ids;
     }
 }

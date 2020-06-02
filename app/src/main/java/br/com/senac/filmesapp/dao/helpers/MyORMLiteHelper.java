@@ -10,12 +10,14 @@ import com.j256.ormlite.table.TableUtils;
 import java.sql.SQLException;
 
 import br.com.senac.filmesapp.modal.domain.Filme;
+import br.com.senac.filmesapp.modal.domain.FilmeGenero;
+import br.com.senac.filmesapp.modal.domain.Genero;
 
 
 public class MyORMLiteHelper extends OrmLiteSqliteOpenHelper {
     //Configuração do banco de dados
     private static final String DATABASE_NAME = "filmes.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 14;
 
     public MyORMLiteHelper(Context c) {
         super(c, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,6 +27,8 @@ public class MyORMLiteHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource) {
         try {
             TableUtils.createTableIfNotExists(connectionSource, Filme.class);
+            TableUtils.createTableIfNotExists(connectionSource, Genero.class);
+            TableUtils.createTableIfNotExists(connectionSource, FilmeGenero.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -34,6 +38,8 @@ public class MyORMLiteHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, ConnectionSource connectionSource, int i, int i1) {
         try {
             TableUtils.dropTable(connectionSource, Filme.class, true);
+            TableUtils.dropTable(connectionSource, Genero.class, true);
+            TableUtils.dropTable(connectionSource, FilmeGenero.class, true);
             onCreate(sqLiteDatabase, connectionSource);
         } catch (SQLException e) {
             e.printStackTrace();

@@ -9,11 +9,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import br.com.senac.filmesapp.modal.FilmeBO;
 import br.com.senac.filmesapp.modal.domain.Filme;
 import br.com.senac.filmesapp.service.api.MovieDBAPIService;
 import br.com.senac.filmesapp.service.api.dto.FilmeDTO;
 
-public class PesquisarFilmeTask extends AsyncTask<String, Integer, List<Filme>> {
+public class PesquisarFilmeTask extends AsyncTask<String, Integer, List<FilmeBO>> {
 
     private Activity activity;
     private ProgressDialog load;
@@ -23,17 +24,17 @@ public class PesquisarFilmeTask extends AsyncTask<String, Integer, List<Filme>> 
     }
 
     @Override
-    protected List<Filme> doInBackground(String... string) {
+    protected List<FilmeBO> doInBackground(String... string) {
         if (string.length == 0 || string[0].trim().isEmpty()) {
             return null;
         }
-        List<Filme> filmes = null;
+        List<FilmeBO> filmes = null;
         try {
             FilmeDTO dto = MovieDBAPIService.getFilmesPorNome(string[0]);
             filmes = dto.toObject();
             int counter = 0;
-            for (Filme f : filmes) {
-                f.setImagBitmap(MovieDBAPIService.getImagem(f.getImg()));
+            for (FilmeBO f : filmes) {
+                f.setImgBitmap(MovieDBAPIService.getImagem(f.getImg()));
                 counter++;
 
                 publishProgress(counter * 100 / filmes.size());
@@ -59,7 +60,7 @@ public class PesquisarFilmeTask extends AsyncTask<String, Integer, List<Filme>> 
     }
 
     @Override
-    protected void onPostExecute(List<Filme> param) {
+    protected void onPostExecute(List<FilmeBO> param) {
         Log.i("AsyncTask", "Tirando ProgressDialog da tela Thread: " +
                 Thread.currentThread().getName());
         load.dismiss();
