@@ -43,8 +43,9 @@ public class Filme implements Serializable {
     private String img;
     @DatabaseField
     private String descricao;
-    @ForeignCollectionField(eager = true)
-    private Collection<FilmeGenero> generos;
+
+//    @ForeignCollectionField
+//    private Collection<Genero> generos;
 
     public Filme(Integer id, Double popularidade, Double mediaVoto, Integer totalVotos, String titulo, String tituloOriginal, String linguagemOriginal, String lancamento, String img, String descricao) {
         this.id = id;
@@ -57,10 +58,10 @@ public class Filme implements Serializable {
         this.lancamento = lancamento;
         this.img = img;
         this.descricao = descricao;
-        this.generos = new ArrayList<>();
+//        this.generos = new ArrayList<>();
     }
 
-    public void addGenero(FilmeGenero genero){
-        this.generos.add(genero);
-    }
+//    public void addGenero(Genero genero){
+//        this.generos.add(genero);
+//    }
 }

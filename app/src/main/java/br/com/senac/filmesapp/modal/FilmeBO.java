@@ -1,12 +1,12 @@
 package br.com.senac.filmesapp.modal;
 
 import android.graphics.Bitmap;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.Serializable;
 
 import br.com.senac.filmesapp.modal.domain.Filme;
-import br.com.senac.filmesapp.modal.domain.FilmeGenero;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +14,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FilmeBO {
+public class FilmeBO implements Parcelable {
+
+    public static final Parcelable.Creator<FilmeBO> CREATOR = new Parcelable.Creator<FilmeBO>() {
+        public FilmeBO createFromParcel(Parcel parcel) {
+            return new FilmeBO(parcel);
+        }
+
+        public FilmeBO[] newArray(int size) {
+            return new FilmeBO[size];
+        }
+    };
 
     private Integer id;
     private Double popularidade;
@@ -26,8 +36,21 @@ public class FilmeBO {
     private String lancamento;
     private String img;
     private String descricao;
-    private Collection<FilmeGenero> generos;
+    //    private Collection<Genero> generos;
     private Bitmap imgBitmap;
+
+    public FilmeBO(Filme f) {
+        this.id = f.getId();
+        this.popularidade = f.getPopularidade();
+        this.mediaVoto = f.getMediaVoto();
+        this.totalVotos = f.getTotalVotos();
+        this.titulo = f.getTitulo();
+        this.tituloOriginal = f.getTituloOriginal();
+        this.linguagemOriginal = f.getLinguagemOriginal();
+        this.lancamento = f.getLancamento();
+        this.img = f.getImg();
+        this.descricao = f.getDescricao();
+    }
 
     public FilmeBO(Integer id, Double popularidade, Double mediaVoto, Integer totalVotos, String titulo, String tituloOriginal, String linguagemOriginal, String lancamento, String img, String descricao) {
         this.id = id;
@@ -40,7 +63,20 @@ public class FilmeBO {
         this.lancamento = lancamento;
         this.img = img;
         this.descricao = descricao;
-        this.generos = new ArrayList<>();
+//        this.generos = new ArrayList<>();
+    }
+
+    public FilmeBO(Parcel p) {
+        this.id = p.readInt();
+        this.popularidade = p.readDouble();
+        this.mediaVoto = p.readDouble();
+        this.totalVotos = p.readInt();
+        this.titulo = p.readString();
+        this.tituloOriginal = p.readString();
+        this.linguagemOriginal = p.readString();
+        this.lancamento = p.readString();
+        this.img = p.readString();
+        this.descricao = p.readString();
     }
 
     public Filme toFilme() {
@@ -55,11 +91,29 @@ public class FilmeBO {
         filme.setLinguagemOriginal(linguagemOriginal);
         filme.setImg(img);
         filme.setLancamento(lancamento);
-        filme.setGeneros(generos);
+//        filme.setGeneros(generos);
         return filme;
     }
 
-    public void addGenero(FilmeGenero genero) {
-        this.generos.add(genero);
+    @Override
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeDouble(popularidade);
+        dest.writeDouble(mediaVoto);
+        dest.writeInt(totalVotos);
+        dest.writeString(titulo);
+        dest.writeString(tituloOriginal);
+        dest.writeString(linguagemOriginal);
+        dest.writeString(lancamento);
+        dest.writeString(img);
+        dest.writeString(descricao);
+    }
+//    public void addGenero(Genero genero) {
+//        this.generos.add(genero);
+//    }
 }

@@ -21,8 +21,7 @@ public class Genero  implements Serializable {
     private Integer id;
     @DatabaseField
     private String genero;
-    @ForeignCollectionField(eager = true)
-    private Collection<FilmeGenero> filmes;
+
 
     public Genero(Integer id, String genero) {
         this.id = id;

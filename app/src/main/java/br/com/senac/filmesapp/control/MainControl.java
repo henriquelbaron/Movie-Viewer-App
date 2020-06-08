@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -91,7 +92,13 @@ public class MainControl {
 
     private void salvar(FilmeBO filme) {
         try {
-            filmeDao.getDao().queryForId(filme.getId());
+//            for (Genero g : filme.getGeneros()) {
+//                generoDao.getDao().refresh(g);
+//            }
+            if(filmeDao.getDao().idExists(filme.getId())){
+                Toast.makeText(activity, "Filme ja adicionado aos Favoritos", Toast.LENGTH_SHORT).show();
+                return;
+            }
             filmeDao.getDao().createIfNotExists(filme.toFilme());
         } catch (SQLException e) {
             e.printStackTrace();

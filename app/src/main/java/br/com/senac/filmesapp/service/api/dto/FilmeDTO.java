@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import br.com.senac.filmesapp.modal.FilmeBO;
-import br.com.senac.filmesapp.modal.domain.Filme;
-import br.com.senac.filmesapp.modal.domain.FilmeGenero;
 import br.com.senac.filmesapp.modal.domain.Genero;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,9 +22,9 @@ public class FilmeDTO {
         List<FilmeBO> filmes = new ArrayList<>();
         for (FilmeResult f : results) {
             FilmeBO filme = new FilmeBO((int)f.getId(), Double.valueOf(f.popularity), Double.valueOf(f.vote_average), (int) f.vote_count, f.title, f.original_title, f.original_language, f.release_date, f.poster_path, f.overview);
-            for (int i = 0; i < f.genre_ids.size(); i++) {
-                filme.addGenero(new FilmeGenero(new Genero(f.genre_ids.get(i)),filme.toFilme()));
-            }
+//            for (int i = 0; i < f.genre_ids.size(); i++) {
+//                filme.addGenero(new Genero(f.genre_ids.get(i)));
+//            }
             filmes.add(filme);
         }
         return filmes;

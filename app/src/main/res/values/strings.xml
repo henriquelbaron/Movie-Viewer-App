@@ -3,4 +3,11 @@
     <string name="escolha_um_genero">Escolha um gênero</string>
     <string name="pesqusar">Pesqusar</string>
     <string name="digite">Digite ...</string>
+    <string name="popularidade">Popularidade :</string>
+    <string name="votos">Votos:</string>
+    <string name="media">Media:</string>
+    <string name="titulo_original">Titulo Original:</string>
+    <string name="data_de_lan_amento">Data de Lançamento :</string>
+    <string name="lingua">Lingua:</string>
+    <string name="sinopse">Sinopse</string>
 </resources>

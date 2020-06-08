@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/filmeNome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
@@ -20,49 +21,149 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="+" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/popularidade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Popularidade"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/votos_qtd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Votos"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/media"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Média\xzx\zx\zx\zx\zx\zx\zx\zx"
-        android:textSize="12sp" />
-
-    <TextView
-        android:id="@+id/titulo_original"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TItulo Original"
-        android:textSize="12sp" />
-
-    <TextSwitcher
-        android:id="@+id/descricao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/imagem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/textViewFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/popularidade" />
+
+        <TextView
+            android:id="@+id/popularidade"
+            style="@style/parametro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                style="@style/textViewFilme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/votos" />
+
+            <TextView
+                android:id="@+id/votos_qtd"
+                style="@style/parametro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                style="@style/textViewFilme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/media" />
+
+            <TextView
+                android:id="@+id/media"
+                style="@style/parametro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5">
+
+            <TextView
+                style="@style/textViewFilme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo_original" />
+
+            <TextView
+                android:id="@+id/titulo_original"
+                style="@style/parametro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                style="@style/textViewFilme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lingua" />
+
+            <TextView
+                android:id="@+id/linguagem_original"
+                style="@style/parametro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/textViewFilme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_de_lan_amento" />
+
+        <TextView
+            android:id="@+id/lancamento"
+            style="@style/parametro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/textViewFilme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sinopse"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/descricao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 </LinearLayout>
